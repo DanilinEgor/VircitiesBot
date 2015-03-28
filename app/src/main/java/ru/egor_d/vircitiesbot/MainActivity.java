@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.SeekBar;
-import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -18,10 +16,10 @@ public class MainActivity extends Activity {
     protected Button startButton;
     @InjectView(R.id.stop)
     protected Button stopButton;
-    @InjectView(R.id.minutes_text)
-    protected TextView minutesText;
-    @InjectView(R.id.minutes_seek_bar)
-    protected SeekBar minutesSeekBar;
+//    @InjectView(R.id.minutes_text)
+//    protected TextView minutesText;
+//    @InjectView(R.id.minutes_seek_bar)
+//    protected SeekBar minutesSeekBar;
 
     private int minutes = 0;
 
@@ -36,6 +34,7 @@ public class MainActivity extends Activity {
         stopButton.setEnabled(utils.loadStarted());
         startButton.setEnabled(!utils.loadStarted());
         minutes = utils.loadFarmMinutes();
+        /*
         minutesText.setText(String.format("%d минут", minutes));
         minutesSeekBar.setProgress(minutes - 3);
         minutesSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -55,6 +54,7 @@ public class MainActivity extends Activity {
 
             }
         });
+        */
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +62,7 @@ public class MainActivity extends Activity {
                 startButton.setEnabled(false);
                 stopButton.setEnabled(true);
                 utils.saveStarted(true);
-                utils.registerAlarm(MainActivity.this, minutes * Utils.MINUTE);
+                utils.registerAlarm(MainActivity.this, 30 * Utils.MINUTE);
                 utils.saveFarmMinutes(minutes);
             }
         });

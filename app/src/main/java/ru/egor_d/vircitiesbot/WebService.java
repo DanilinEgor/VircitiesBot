@@ -25,4 +25,8 @@ public interface WebService {
 
     @GET("/big_fights/kick/111.json")
     void vote(Callback<JsonObject> callback);
+
+    @Headers({"Content-type: application/x-www-form-urlencoded"})
+    @POST("/sport_activities/use_program.json")
+    void train(@Body TypedString s, Callback<JsonObject> callback);
 }
