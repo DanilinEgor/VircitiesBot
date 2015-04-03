@@ -50,14 +50,6 @@ public class Utils {
         PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("started", b).commit();
     }
 
-    public int loadFarmMinutes() {
-        return PreferenceManager.getDefaultSharedPreferences(context).getInt("farm_minutes", 20);
-    }
-
-    public void saveFarmMinutes(int m) {
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putInt("farm_minutes", m).commit();
-    }
-
     public void registerAlarm(Context context, int interval) {
         Intent i = new Intent(context, MoneyBroadcastReceiver.class);
         PendingIntent sender = PendingIntent.getBroadcast(context, Utils.BROADCAST_REQUEST_CODE, i, 0);

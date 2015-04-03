@@ -20,13 +20,23 @@ public interface WebService {
     @GET("/users/check.json")
     void check(Callback<JsonObject> callback);
 
+    @GET("/users/short_infos.json")
+    void getShortInfo(Callback<JsonObject> callback);
+
     @POST("/military/pve/gangs/1/fight")
     void fight(Callback<JsonObject> callback);
 
-    @GET("/big_fights/kick/111.json")
+    @GET("/big_fights/kick/113.json")
     void vote(Callback<JsonObject> callback);
 
     @Headers({"Content-type: application/x-www-form-urlencoded"})
     @POST("/sport_activities/use_program.json")
     void train(@Body TypedString s, Callback<JsonObject> callback);
+
+    @Headers({"Content-type: application/x-www-form-urlencoded"})
+    @POST("/user_items/eat_user_item.json")
+    void eat(@Body TypedString s, Callback<JsonObject> callback);
+
+    @GET("/users/sport.json")
+    void sport(Callback<JsonObject> callback);
 }
