@@ -34,23 +34,23 @@ public class MoneyBroadcastReceiver extends BroadcastReceiver {
     private Utils utils;
     private List<Integer> eatList = new ArrayList<Integer>() {{
 //        add(306403);
-        add(310970);
+        add(312424);
         add(309906);
         add(306408);
         add(310765);
         add(310766);
 //        add(309905);
-        add(310791);
+        add(312399);
     }};
     private Map<String, Integer> eatMap = new HashMap<String, Integer>() {{
-        put("Молоко", 310970);
+        put("Молоко", 312424);
         put("Пицца \"Рыбацкая\"", 306408);
         put("Рыбный пирог", 309906);
         put("Мясная булка", 310765);
 //        put("Зерно", 306403);
         put("Жаркое", 310766);
 //        put("Рыба", 309905);
-        put("Мясо", 310791);
+        put("Мясо", 312399);
     }};
 
     @Override
@@ -75,7 +75,7 @@ public class MoneyBroadcastReceiver extends BroadcastReceiver {
                 ws.check(new Callback<JsonObject>() {
                     @Override
                     public void success(JsonObject s, Response response) {
-                        vote();
+                        work();
                         ws.getShortInfo(new Callback<JsonObject>() {
                             @Override
                             public void success(JsonObject jsonObject, Response response) {
@@ -116,6 +116,21 @@ public class MoneyBroadcastReceiver extends BroadcastReceiver {
                 Toast.makeText(context, String.format("Error while login: %s", error.getMessage()), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void work() {
+        ws.work(new TypedString("data%5BUser%5D%5Benergy%5D=100&data%5BCompany%5D%5Bid%5D=1123"),
+                new Callback<JsonObject>() {
+                    @Override
+                    public void success(JsonObject jsonObject, Response response) {
+
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+
+                    }
+                });
     }
 
     private void go1() {

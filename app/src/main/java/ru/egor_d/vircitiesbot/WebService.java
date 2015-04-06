@@ -37,6 +37,10 @@ public interface WebService {
     @POST("/user_items/eat_user_item.json")
     void eat(@Body TypedString s, Callback<JsonObject> callback);
 
+    @Headers({"Content-type: application/x-www-form-urlencoded"})
+    @POST("/users/begin_work_master.json")
+    void work(@Body TypedString s, Callback<JsonObject> callback);
+
     @GET("/users/sport.json")
     void sport(Callback<JsonObject> callback);
 }
